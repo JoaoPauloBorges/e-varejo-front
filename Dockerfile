@@ -2,7 +2,7 @@ FROM node:15.10.0-alpine3.11 as build
 WORKDIR /app
 COPY package.json /app
 
-RUN yarn install --production
+RUN yarn install
 COPY . .
 RUN yarn build
 
