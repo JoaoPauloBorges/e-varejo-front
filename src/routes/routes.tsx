@@ -8,30 +8,20 @@ import Router from './router';
 
 const Routes: FC = () => (
   <Switch>
+    <Router exact={true} path="/" component={Home} titleHeader="Home" />
     <Router
-      exact={true}
-      path="/"
-      component={Home}
-      titleHeader='Home'
-    />
-    <Router
-      exact={true}
+      exact={false}
       path="/products"
       component={ProductsList}
-      titleHeader='Listagem Produtos'
+      titleHeader="Listagem Produtos"
     />
     <Router
       exact={true}
       path="/create"
       component={ProductsCreate}
-      titleHeader='Cadastro Produtos'
+      titleHeader="Cadastro Produtos"
     />
-    <Router
-      path="*"
-      exact={false}
-      component={NotFound}
-      titleHeader='Página não encontrada'
-    />
+    <Router path="*" exact={false} component={NotFound} titleHeader="Página não encontrada" />
   </Switch>
 );
 
