@@ -48,10 +48,10 @@ const ProductsList: FC = () => {
         <p style={{ color: "gray" }}>
           {!!entry.discount && entry.discount !== 0 && (
             <>
-              <s>{fmt.format(entry.discount)}</s> por{" "}
+              <s>{fmt.format(entry.value)}</s> por{" "}
             </>
           )}
-          <b style={{ color: "black" }}>{fmt.format(entry.value)}</b>
+          <b style={{ color: "black" }}>{fmt.format(entry.value - entry.discount)}</b>
         </p>
       ),
     },

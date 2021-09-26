@@ -25,7 +25,6 @@ const ImageUploader: FC<Props> = ({ IdProduct }) => {
   }
 
   const handleCancel = () => {
-    console.log("aqui");
     return setPreviewVisible(false);
   };
 
@@ -42,8 +41,9 @@ const ImageUploader: FC<Props> = ({ IdProduct }) => {
     );
   };
 
-  const handleChange = ({ fileList }: { fileList: any }) =>
+  const handleChange = ({ fileList }: { fileList: any }) => {
     setFileList(fileList);
+  };
 
   const updloadDrag = (
     <>
@@ -57,8 +57,12 @@ const ImageUploader: FC<Props> = ({ IdProduct }) => {
     </>
   );
 
-  const handleOnRemove = () => {
-    console.log("to aqui");
+  const handleOnRemove = async (file: any) => {
+    if (!!file.response?.includes("https://storage.googleapis.com")) {
+      await api
+        .delete("/files", { params: { filename: file.response } })
+        .catch((err) => console.error(err));
+    }
   };
 
   return (
@@ -73,7 +77,6 @@ const ImageUploader: FC<Props> = ({ IdProduct }) => {
         onChange={handleChange}
         onRemove={handleOnRemove}
         maxCount={4}
-        onDrop={(e) => console.log("Dropped files", e.dataTransfer.files)}
         multiple
         style={{
           width: "50%",

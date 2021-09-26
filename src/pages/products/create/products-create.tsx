@@ -2,7 +2,6 @@ import React, { FC, useEffect, useState } from "react";
 import ImageUploader from "components/imageUploader/imageUploader";
 import {
   Button,
-  message,
   Skeleton,
   Steps,
   Form,
@@ -13,6 +12,7 @@ import { Content } from "antd/lib/layout/layout";
 import { CreateProductDto } from "./dto/create-product.dto";
 import api from "services/api";
 import { Product } from "./models/product";
+import { Link } from "react-router-dom";
 
 const { Step } = Steps;
 const ProductsCreate: FC = () => {
@@ -164,12 +164,9 @@ const ProductsCreate: FC = () => {
             )}
 
             {current === steps.length - 1 && (
-              <Button
-                type="primary"
-                onClick={() => message.success("Processing complete!")}
-              >
-                Done
-              </Button>
+              <Link to="/products">
+                <Button type="primary">Done</Button>
+              </Link>
             )}
           </div>
         </Form>

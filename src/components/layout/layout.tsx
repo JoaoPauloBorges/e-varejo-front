@@ -1,8 +1,7 @@
 import { Layout, Menu, Row } from "antd";
 import SearchBox from "components/searchBox";
 import React, { FC, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { useDebouncedCallback } from "use-debounce/lib";
+import { NavLink, useLocation } from "react-router-dom";
 import LogoSrc from "../../assets/mmartam.png";
 import { PageName } from "./styles";
 
@@ -18,22 +17,22 @@ const Cabecalho: FC = () => {
           <div
             style={{ minWidth: "100px", maxWidth: "100px", margin: "0 8px" }}
           >
-            <Link to="/">
+            <NavLink to="/">
               <img
                 src={LogoSrc}
                 alt="logo da empresa (mmartam)"
                 style={{ maxWidth: "100%" }}
               />
-            </Link>
+            </NavLink>
           </div>
-          <Menu theme="light" mode="horizontal" defaultSelectedKeys={["1"]}>
+          <Menu theme="light" mode="horizontal" >
             <Menu.Item key="1">
               Produtos
-              <Link to="/products" />
+              <NavLink to="/products" activeClassName="active" />
             </Menu.Item>
             <Menu.Item key="2">
               Cadastro
-              <Link to="/create" />
+              <NavLink to="/create" activeClassName="active" />
             </Menu.Item>
           </Menu>
         </div>
