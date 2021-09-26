@@ -8,6 +8,7 @@ import { PageName } from "./styles";
 const { Header, Content } = Layout;
 
 const Cabecalho: FC = () => {
+  const  location = useLocation()
   return (
     <>
       <Row justify="space-between" align="middle" style={{ width: "100%" }}>
@@ -25,14 +26,14 @@ const Cabecalho: FC = () => {
               />
             </NavLink>
           </div>
-          <Menu theme="light" mode="horizontal" >
-            <Menu.Item key="1">
+          <Menu theme="light" mode="horizontal" activeKey={location.pathname} selectedKeys={[location.pathname]}>
+            <Menu.Item key="/products">
               Produtos
-              <NavLink to="/products" activeClassName="active" />
+              <NavLink to="/products" />
             </Menu.Item>
-            <Menu.Item key="2">
+            <Menu.Item key="/create">
               Cadastro
-              <NavLink to="/create" activeClassName="active" />
+              <NavLink to="/create"  />
             </Menu.Item>
           </Menu>
         </div>
