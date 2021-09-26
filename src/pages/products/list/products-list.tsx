@@ -61,7 +61,11 @@ const ProductsList: FC = () => {
     try {
       setLoading(true);
 
-      const params = { search: location.search.split("q=")?.[1] };
+      const params = {
+        page,
+        size,
+        search: location.search.split("q=")?.[1]
+       };
 
       const { data: resp } = await api.get<PageableContent>("products", {
         params,
