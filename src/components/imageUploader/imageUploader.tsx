@@ -59,8 +59,9 @@ const ImageUploader: FC<Props> = ({ IdProduct }) => {
 
   const handleOnRemove = async (file: any) => {
     if (!!file.response?.includes("https://storage.googleapis.com")) {
+      const params = { imgUrl: file.response };
       await api
-        .delete("/files", { params: { filename: file.response } })
+        .delete(`/products/${IdProduct}/images`, { params })
         .catch((err) => console.error(err));
     }
   };
@@ -68,7 +69,7 @@ const ImageUploader: FC<Props> = ({ IdProduct }) => {
   return (
     <>
       <Dragger
-        action={`${api.defaults.baseURL}/files/product/${IdProduct}`}
+        action={`${api.defaults.baseURL}/products/${IdProduct}/images`}
         method="POST"
         listType="picture-card"
         accept="image/*"
