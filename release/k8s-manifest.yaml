@@ -16,16 +16,13 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: gcr.io/e-varejo/frontend:v1
+          image: gcr.io/e-varejo/frontend:v1.0.1
           ports:
           - containerPort: 80
           lifecycle:
             preStop:
               exec:
                 command: ["/usr/sbin/nginx","-s","quit"]
-          env:
-          - name: REACT_APP_API_HOST
-            value: http://35.199.73.142/
 ---
 
 apiVersion: v1
